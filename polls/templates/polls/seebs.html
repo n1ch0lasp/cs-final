@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% include 'polls/header.html' %}
+    {% include 'polls/navbar.html' %}
+</head>
+<body>
+    {% block content %}
+    {{chart|safe}}
+    {% endblock %}
+    <p style="text-align:center;"> Amount of people: Grey = 0, Green = 1, Yellow = 2, Orange = 3, Red = 4+</p>
+</body>
+<footer>
+    {% include "polls/footer.html" %}
+</footer>
+
+</html>
+
+
+

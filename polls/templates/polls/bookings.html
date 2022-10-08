@@ -1,0 +1,39 @@
+
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
+
+<!doctype html>
+<html lang="en">
+<head>
+    {% include 'polls/header.html' %}
+    {% include 'polls/navbar.html' %}
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+<div class="container">
+
+
+    <form method="post">{% csrf_token %}
+        {% if user.is_authenticated %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Save" name="booksubmit">
+        {% endif %}
+    </form>
+
+    <label for="fl">Bookings:</label>
+    <br>
+    <label for="fl">Only 4 people per hour, priority will be given to Premium Members</label>
+    <ul>
+        {% for fll in nfl %}
+        <li>{{ fll|safe }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<footer>
+    {% include "polls/footer.html" %}
+</footer>

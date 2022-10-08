@@ -1,0 +1,53 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+<div class="container">
+    {% if user.is_authenticated %}
+    <h1>Edit Profile Page</h1>
+
+    <form action="/accounts/profile/" method="post">
+        <label for="username">Enter Username: </label>
+        <input id="username" type="text" name="username" value= {{ user.username }}>
+        <br>
+        <br>
+        <label for="firstname">Enter First Name: </label>
+        <input id="firstname" type="text" name="firstname" value= {{ user.first_name }}>
+        <br>
+        <br>
+        <label for="lastname">Enter Last Name: </label>
+        <input id="lastname" type="text" name="lastname" value= {{ user.last_name }}>
+        <br>
+        <br>
+        <label for="gender">Enter Gender: </label>
+        <input id="gender" type="text" name="gender" value= {{ user.profile.gender }}>
+        <br>
+        <br>
+        <label for="age">Enter age: </label>
+        <input id="age" type="number" name="age" value= {{ user.profile.age }}>
+        <br>
+        <br>
+        <label for="status">Your status: </label>
+        <label>{{ user.profile.status }} </label> 
+        <br>
+        <br>
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Save">
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+    </form>
+    {% endif %}
+    <br>
+    
+    <label for="ds">My Bookings: </label>
+    <ul>
+        {% for dss in ds %}
+        <li>{{ dss|safe }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+
+
+

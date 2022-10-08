@@ -1,0 +1,17 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+
+<div id="center">
+{% if request.user.is_authenticated %}
+        <h1 style="text-align:center;">Hello {{ user.username }}, Welcome to Gymanager</h1>
+{% else %}
+
+    <h1 style="text-align:center;"> Greetings, sign up or log in first.</h1>
+{% endif %}
+        </div>
+{% endblock %}
+
+
+
+
+
